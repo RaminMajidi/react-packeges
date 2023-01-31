@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --color-dark :#181D31;
+  --color-primary :#678983;
+  --color-light :#E6DDC4;
+  --color-white :#F0E9D2;
+}
+.App{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-dark);
+}
+
+.neumorphism{
+border-radius: 0px;
+background: #181D31;
+box-shadow: inset 5px 5px 6px #0a0c14,
+            inset -5px -5px 6px #262e4e;
+}
+
+

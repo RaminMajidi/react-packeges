@@ -1,0 +1,40 @@
+.sigCanvas{
+    position: relative;
+    width:100%;
+    max-width:600px;
+    height: 500px;
+    border: 2px solid black;
+    margin:0 auto;
+    cursor:crosshair;
+}
+.btns{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin:0 auto 10px;
+    border: 2px solid black;
+}
+.btns button{
+    border-radius: 15px;
+    background: #678983;
+    box-shadow: inset 5px 5px 10px #293734,
+                inset -5px -5px 10px #a5dbd2;
+    width: max-content;
+    padding: 5px 10px;
+    margin: 5px;
+    color:var(--color-light);
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 32px;
+    transition: all .5s ease-in-out;
+}
+.btns button:hover{
+    background-color:var(--color-light);
+    color:var(--color-dark);
+}
+.btns input , .btns svg{
+    cursor: pointer;
+}
