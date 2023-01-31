@@ -108,13 +108,13 @@ const removeFromlocalHandeler = ()=>{
     return(
         <>
         <div className='btns neumorphism'>
-            <button title='Clear Canvas' className='neumorphism' onClick={clearHandeler}><box-icon name='trash'></box-icon></button>
+            <button ><box-icon name='pencil'></box-icon><input  value={penWeight} title='وزن قلم' min={1} max={10} type={'range'} onChange={handelPenWeight}/></button> 
             <button ><box-icon type='solid' name='color-fill'/><input defaultValue={"#181D31"} title='رنگ پس زمینه' type={'color'} onChange={handelBackgroundColor}/></button>
             <button ><box-icon type='solid' name='eyedropper'></box-icon><input defaultValue={"#F0E9D2"} title='رنگ قلم' type={'color'} onChange={handelPenColor}/></button>
-            <button ><box-icon name='pencil'></box-icon><input  value={penWeight} title='وزن قلم' min={1} max={10} type={'range'} onChange={handelPenWeight}/></button> 
              {sigArryData && 
              (
             <>
+            <button title='Clear Canvas' className='neumorphism' onClick={clearHandeler}><box-icon name='trash'></box-icon></button>
             <button title='برگشت به عقب' onClick={handelUndo}><box-icon name='undo'></box-icon></button>
             <button style={{cursor:"copy"}} title='کپی به صورت لینک' className='neumorphism' onClick={copyDataUrlHandeler}><box-icon name='copy-alt'></box-icon></button>
             <button style={{cursor:"pointer"}} title='دانلود به صورت عکس' className='neumorphism'><a onClick={downloadHandeler} target={"_blank"} href={imgurl} download ><box-icon name='download'></box-icon></a></button>
