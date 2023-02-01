@@ -1,8 +1,8 @@
 import SignatureCanvas from 'react-signature-canvas'
 import "./SignatureCanvas.css"
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Toast } from '../design/alert'
-import { json } from 'react-router-dom'
+
 
 
 
@@ -29,12 +29,7 @@ const handelPenWeight =(e)=>{
 }
 
 const downloadHandeler =()=>{
-    Toast.fire({
-        icon: 'success',
-        title: 'دانلود عکس !!!'
-      })
       clearHandeler();
-
 }
 
 
@@ -55,10 +50,7 @@ const copyDataUrlHandeler = async ()=>{
       } 
 }
 
-const handelBackgroundColor =(e)=>{
-    setBgColor(e.target.value)
-    clearHandeler();
-}
+
 
 const toDataUrlHandeler = ()=>{
   let arryData = signRef.current.toData();
@@ -109,7 +101,6 @@ const removeFromlocalHandeler = ()=>{
         <>
         <div className='btns neumorphism'>
             <button ><box-icon name='pencil'></box-icon><input  value={penWeight} title='وزن قلم' min={1} max={10} type={'range'} onChange={handelPenWeight}/></button> 
-            <button ><box-icon type='solid' name='color-fill'/><input defaultValue={"#181D31"} title='رنگ پس زمینه' type={'color'} onChange={handelBackgroundColor}/></button>
             <button ><box-icon type='solid' name='eyedropper'></box-icon><input defaultValue={"#F0E9D2"} title='رنگ قلم' type={'color'} onChange={handelPenColor}/></button>
              {sigArryData && 
              (
