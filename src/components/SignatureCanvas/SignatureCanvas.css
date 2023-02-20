@@ -1,35 +1,53 @@
 .sigCanvas{
     position: relative;
-    width:100%;
+    width:94%;
     max-width:600px;
     height: 500px;
-    border: 2px solid black;
-    margin:0 auto;
+    border: 2px solid #f2f2f2;
+    margin: auto;
     cursor:crosshair;
 }
 .btns{
-    width: 100%;
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 19rem;
+    min-height: 100vh;
+    right: -19rem;
+    top: 0;
+    padding: 10px;
+    margin:0 auto 10px;
+    z-index: 50;
+    transition: all .5s ease-in-out;
+}
+.btns.show{
+    right: 0;
+}
+
+.btns button{
     display: flex;
     justify-content:center;
     align-items: center;
-    flex-wrap: wrap;
-    padding: 10px;
-    margin:0 auto 10px;
-    border: 2px solid black;
-}
-.btns button{
-    border-radius: 15px;
+    border-radius: 10px;
     background: #678983;
     box-shadow: inset 5px 5px 10px #293734,
                 inset -5px -5px 10px #a5dbd2;
-    width: max-content;
+    width:15rem;
     padding: 5px 10px;
     margin: 5px;
     color:var(--color-light);
     font-size: 1.1rem;
     border: none;
-    border-radius: 32px;
+    border-radius:10px;
     transition: all .5s ease-in-out;
+}
+.btns button span{
+    display: inline-block;
+    color: #293734;
+    margin-right: 5px;
+    font-weight: bold;
 }
 .btns button:hover{
     background-color:var(--color-light);
@@ -37,4 +55,40 @@
 }
 .btns input , .btns svg{
     cursor: pointer;
+}
+
+.btn-menu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width:30px;
+    height:30px;
+    right: 20rem;
+    top: .5rem;
+    cursor: pointer;
+}
+.btn-menu.show{
+    right: 20rem;
+}
+.btn-menu span{
+    display: inline-block;
+    width: 100%;
+    margin: 3px;
+
+}
+.btn-menu .item-1,.item-2,.item-3{
+border: 2px solid #fff;
+transition: all .5s ease-in-out;
+}
+
+.btn-menu.show .item-1{
+    transform:  rotate(130deg);
+    margin-top: 10px;
+}
+.btn-menu.show .item-2{
+    transform:  rotate(230deg);
+    margin-top: -6px;
+}
+.btn-menu.show .item-3{
+    border: none;
 }

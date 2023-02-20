@@ -14,6 +14,7 @@ const Signature = ()=>{
     const [penWeight,setPenWeight] = useState(1);
     const [sigArryData,setSigArryData] = useState(null);
     const [localData,setLocalData] = useState(localStorage.getItem("signatureData") || "")
+    const [menu,setMenu]=useState(false);
 
 const clearHandeler = ()=>{
 signRef.current.clear();
@@ -37,7 +38,6 @@ const copyDataUrlHandeler = async ()=>{
     const dataUrl =  await signRef.current.toDataURL();
       try {
         await navigator.clipboard.writeText(dataUrl);
-        console.log('Content copied to clipboard');
         Toast.fire({
             icon: 'success',
             title: 'لینک با موفقیت کپی شد !'
@@ -99,24 +99,72 @@ const removeFromlocalHandeler = ()=>{
 
     return(
         <>
-        <div className='btns neumorphism'>
-            <button ><box-icon name='pencil'></box-icon><input  value={penWeight} title='وزن قلم' min={1} max={10} type={'range'} onChange={handelPenWeight}/></button> 
-            <button ><box-icon type='solid' name='eyedropper'></box-icon><input defaultValue={"#F0E9D2"} title='رنگ قلم' type={'color'} onChange={handelPenColor}/></button>
+        <div className={`btns neumorphism ${menu ? "show" :""}`}>
+
+        <div onClick={()=>setMenu(menu ? false : true )} className={`btn-menu ${menu ? "show" :""}`}>
+            <span className='item-1'></span>
+            <span className='item-2'></span>
+            <span className='item-3'></span>
+        </div>
+
+            <button >
+            <span>وزن قلم</span>
+            <box-icon name='pencil'></box-icon><input  value={penWeight} title='وزن قلم' min={1} max={10} type={'range'} onChange={handelPenWeight}/>
+            </button> 
+
+            <button >
+            <span>رنگ قلم</span>
+            <box-icon type='solid' name='eyedropper'></box-icon>
+            <input defaultValue={"#F0E9D2"} title='رنگ قلم' type={'color'} onChange={handelPenColor}/>
+            </button>
              {sigArryData && 
              (
             <>
-            <button title='Clear Canvas' className='neumorphism' onClick={clearHandeler}><box-icon name='trash'></box-icon></button>
-            <button title='برگشت به عقب' onClick={handelUndo}><box-icon name='undo'></box-icon></button>
-            <button style={{cursor:"copy"}} title='کپی به صورت لینک' className='neumorphism' onClick={copyDataUrlHandeler}><box-icon name='copy-alt'></box-icon></button>
-            <button style={{cursor:"pointer"}} title='دانلود به صورت عکس' className='neumorphism'><a onClick={downloadHandeler} target={"_blank"} href={imgurl} download ><box-icon name='download'></box-icon></a></button>
-            <button onClick={saveTolocalHandeler} style={{cursor:"pointer"}} title='ذخیره در حافظه' className='neumorphism'><box-icon name='save'></box-icon></button>
+
+            <button title='Clear Canvas' className='neumorphism' onClick={clearHandeler}>
+            <span>پاک کردن صفحه</span>
+            <box-icon name='trash'></box-icon>
+            </button>
+
+            <button title='برگشت به عقب' onClick={handelUndo}>
+            <span>بازگشت به عقب</span>
+            <box-icon name='undo'></box-icon>
+            </button>
+
+            <button style={{cursor:"copy"}} title='کپی به صورت لینک' className='neumorphism' onClick={copyDataUrlHandeler}>
+            <span>کپی به صورت لینک</span>
+            <box-icon name='copy-alt'></box-icon>
+            </button>
+
+
+            <button style={{cursor:"pointer"}} title='دانلود به صورت عکس' className='neumorphism'>
+            <a onClick={downloadHandeler} target={"_blank"} href={imgurl} download >
+            <span>دانلود به صورت عکس</span>
+            <box-icon name='download'></box-icon>
+            </a>
+            </button>
+
+
+            <button onClick={saveTolocalHandeler} style={{cursor:"pointer"}} title='ذخیره در حافظه' className='neumorphism'>
+            <span>ذخیره در مرورگر</span>
+            <box-icon name='save'></box-icon>
+            </button>
+
             </>
             )
         }
         {localData &&(
             <>
-            <button onClick={importFromlocalHandeler} style={{cursor:"pointer"}} title='واکشی از حافظه' className='neumorphism'><box-icon name='file-import' type='solid' ></box-icon></button>
-            <button onClick={removeFromlocalHandeler} style={{cursor:"pointer"}} title='حذف از حافظه' className='neumorphism'><box-icon name='message-alt-x'></box-icon></button>            
+            <button onClick={importFromlocalHandeler} style={{cursor:"pointer"}} title='واکشی از حافظه' className='neumorphism'>
+            <span>واکشی از حافظه</span>
+            <box-icon name='file-import' type='solid' ></box-icon>
+            </button>
+
+            <button onClick={removeFromlocalHandeler} style={{cursor:"pointer"}} title='حذف از حافظه' className='neumorphism'>
+            <span>حذف از حافظه</span>
+            <box-icon name='message-alt-x'></box-icon>
+            </button>     
+
             </>
                 )
         }
